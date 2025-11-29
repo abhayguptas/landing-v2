@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --font-public-sans: 'Public Sans', sans-serif;
+  --color-background: #faf8f5;
+  --color-foreground: #252525;
+  --color-muted: #6b6a63;
+}
+
+@theme {
+  --font-sans: var(--font-public-sans);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Lenis recommended styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
