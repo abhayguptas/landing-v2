@@ -52,10 +52,13 @@ export function FAQ() {
           </h2>
           <div className="h-[2.5px] w-full bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff]" />
         </div>
+        <span className="text-sm md:text-base font-medium text-[#252525]/60">
+          (08)
+        </span>
       </motion.div>
 
       {/* Header Section */}
-      <div className="relative flex h-[50vh] items-center justify-start">
+      <div className="relative flex h-[30vh] items-center justify-start mb-6 md:mb-8">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -125,57 +128,57 @@ export function FAQ() {
                     initial={false}
                     className={`flex flex-col ${!isLast ? 'border-b border-white/10' : ''} ${index === 0 ? '' : 'pt-6'} ${isLast ? '' : 'pb-6'}`}
                   >
-                      <button
-                        onClick={() => toggleFAQ(index)}
+                    <button
+                      onClick={() => toggleFAQ(index)}
                         className="w-full flex items-center justify-between text-left group"
-                      >
+                    >
                         <h3 className="text-2xl md:text-3xl font-medium text-white pr-4 flex-1 min-w-0">
-                          {faq.question}
-                        </h3>
+                        {faq.question}
+                      </h3>
                         <div className="flex-shrink-0 ml-4 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-md group-hover:bg-white/15 transition-colors">
                           <motion.span
-                            animate={{ rotate: isExpanded ? 45 : 0 }}
-                            transition={{ 
-                              duration: 0.4, 
+                        animate={{ rotate: isExpanded ? 45 : 0 }}
+                        transition={{ 
+                          duration: 0.4, 
                               ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-                              type: "spring",
-                              stiffness: 300,
-                              damping: 25
-                            }}
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 25
+                        }}
                             className="text-white text-xl md:text-2xl font-light"
-                          >
+                      >
                             +
                           </motion.span>
                         </div>
-                      </button>
-                      
-                      <AnimatePresence>
-                        {isExpanded && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ 
-                              duration: 0.4, 
+                    </button>
+                    
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ 
+                            duration: 0.4, 
                               ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-                              opacity: { duration: 0.3 }
-                            }}
-                            className="overflow-hidden"
-                          >
-                            <motion.div 
+                            opacity: { duration: 0.3 }
+                          }}
+                          className="overflow-hidden"
+                        >
+                          <motion.div 
                               className="pt-4"
-                              initial={{ y: -10 }}
-                              animate={{ y: 0 }}
-                              exit={{ y: -10 }}
+                            initial={{ y: -10 }}
+                            animate={{ y: 0 }}
+                            exit={{ y: -10 }}
                               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                            >
+                          >
                               <p className="text-base md:text-lg text-white/70 leading-relaxed">
-                                {faq.answer}
-                              </p>
-                            </motion.div>
+                              {faq.answer}
+                            </p>
                           </motion.div>
-                        )}
-                      </AnimatePresence>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 )
               })}

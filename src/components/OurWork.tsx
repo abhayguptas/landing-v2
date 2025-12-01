@@ -6,32 +6,36 @@ import { cn } from '@/lib/utils'
 
 const workImages = [
   {
-    src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
-    alt: 'Modern architecture building',
+    src: '/gta.png',
+    alt: 'Renor Labs system grid cityscape',
   },
   {
-    src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
-    alt: 'Urban cityscape at sunset',
+    src: '/orbit.png',
+    alt: 'Renor Labs orbital diagram artwork',
   },
   {
-    src: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
-    alt: 'Abstract geometric pattern',
+    src: '/gta.png',
+    alt: 'Renor Labs abstract product collage',
   },
   {
-    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
-    alt: 'Mountain landscape',
+    src: '/japan-gradient.png',
+    alt: 'Renor Labs gradient poster composition',
   },
   {
-    src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
-    alt: 'Minimalist design elements',
+    src: '/grid.png',
+    alt: 'Renor Labs system grid layout',
   },
   {
-    src: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
-    alt: 'Ocean waves and beach',
+    src: '/footer.png',
+    alt: 'Renor Labs architectural footer graphic',
   },
   {
-    src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
-    alt: 'Forest trees and sunlight',
+    src: '/2.png',
+    alt: 'Renor Labs monochrome system illustration',
+  },
+  {
+    src: 'fuji.png',
+    alt: 'Renor Labs experimental bloom artwork',
   },
 ]
 
@@ -53,10 +57,13 @@ export function OurWork() {
             </h2>
             <div className="h-[2.5px] w-full bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff]" />
           </div>
+          <span className="text-sm md:text-base font-medium text-[#252525]/60">
+            (05)
+          </span>
         </motion.div>
 
         {/* Header Section */}
-        <div className="relative flex h-[50vh] items-center justify-start">
+        <div className="relative flex h-[30vh] items-center justify-start mb-6 md:mb-8">
           {/* Radial spotlight */}
           <div
             aria-hidden="true"

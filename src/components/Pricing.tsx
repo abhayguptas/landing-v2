@@ -227,6 +227,9 @@ export function Pricing() {
           </h2>
           <div className="h-[2.5px] w-full bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff]" />
         </div>
+        <span className="text-sm md:text-base font-medium text-[#252525]/60">
+          (07)
+        </span>
       </motion.div>
 
       <div className="max-w-7xl mx-auto">

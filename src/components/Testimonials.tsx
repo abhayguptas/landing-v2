@@ -22,10 +22,13 @@ export function Testimonials() {
           </h2>
           <div className="h-[2.5px] w-full bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff]" />
         </div>
+        <span className="text-sm md:text-base font-medium text-[#252525]/60">
+          (06)
+        </span>
       </motion.div>
 
       {/* Header Section */}
-      <div className="relative flex h-[40vh] items-center justify-start">
+      <div className="relative flex h-[30vh] items-center justify-start mb-6 md:mb-8">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -5,8 +5,9 @@ import { motion } from 'framer-motion'
 const processes = [
   {
     category: 'Experiential',
-    title: 'Architecture',
-    description: 'We build to inspire, but also build to code. At Renor, design is only as strong as its function. Our architects specialize in bridging imagination with reality, ensuring bold concepts meet practical standards.',
+    title: 'Seed',
+    description:
+      'We begin by shaping clarity. Your idea is refined into a focused, actionable product plan with the essentials defined: users, flows, constraints, and outcomes.',
     services: [
       'Creative and Design Direction',
       'Moodboards',
@@ -21,12 +22,14 @@ const processes = [
     ],
     gradient: 'from-[#ff4d00] to-[#ff6d33]',
     color: '#ff4d00',
-    pastelColor: '#262626'
+    pastelColor: '#262626',
+    frontImage: '/p1.png'
   },
   {
     category: 'Digital',
-    title: '3D Modelling',
-    description: 'We create immersive digital experiences through advanced 3D modeling techniques. Our team transforms concepts into detailed virtual environments that bring your vision to life with precision and creativity.',
+    title: 'Shape',
+    description:
+      'We turn direction into structure. Design, architecture, and early functionality take form as the product starts to look and behave like something real.',
     services: [
       '3D Modelling',
       'Motion & Animation',
@@ -35,12 +38,14 @@ const processes = [
     ],
     gradient: 'from-[#0066ff] to-[#3385ff]',
     color: '#0066ff',
-    pastelColor: '#262626'
+    pastelColor: '#262626',
+    frontImage: '/p2.png'
   },
   {
     category: 'Brand',
-    title: 'Brand Identity',
-    description: 'We craft cohesive brand systems that communicate who you are with clarity and intention. From the core idea to every visual expression, we ensure your brand stands out and resonates with your audience.',
+    title: 'Bloom',
+    description:
+      'We bring the full product to life. A complete, working product is delivered with precision and clarity—stable, dependable, and built for long-term growth.',
     services: [
       'Brand Strategy',
       'Visual Identity',
@@ -50,7 +55,8 @@ const processes = [
     ],
     gradient: 'from-[#ffea00] to-[#fff033]',
     color: '#ffea00',
-    pastelColor: '#262626'
+    pastelColor: '#262626',
+    frontImage: '/p3.png'
   }
 ]
 
@@ -71,13 +77,13 @@ export function Process() {
           </h2>
           <div className="h-[2.5px] w-full bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff]" />
         </div>
-        <span className="text-sm md:text-base font-medium text-[#252525]">
+        <span className="text-sm md:text-base font-medium text-[#252525]/60">
           (03)
         </span>
       </motion.div>
 
       {/* Header Section */}
-      <div className="relative flex h-[50vh] items-center justify-start">
+      <div className="relative flex h-[30vh] items-center justify-start mb-6 md:mb-8">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -131,7 +137,7 @@ export function Process() {
         .process-card {
           background-color: rgba(0, 0, 0, 0.05);
           box-shadow: -0.1rem 1.7rem 6.6rem -3.2rem rgba(0, 0, 0, 0.5);
-          height: 20rem;
+          height: 24rem;
           position: relative;
           transition: all 1s ease;
           width: 20rem;
@@ -147,7 +153,7 @@ export function Process() {
         }
 
         .process-flip-card {
-          height: 20rem;
+          height: 24rem;
           perspective: 100rem;
           position: absolute;
           right: 0;
@@ -187,7 +193,7 @@ export function Process() {
 
         .process-card-front {
           background-color: #faf8f5;
-          height: 20rem;
+          height: 24rem;
           width: 20rem;
           border-radius: 1rem;
           overflow: hidden;
@@ -195,12 +201,11 @@ export function Process() {
 
         .process-card-front__tp {
           align-items: center;
-          clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
           display: flex;
           flex-direction: column;
-          height: 16rem;
+          height: 24rem;
           justify-content: center;
-          padding: 1rem;
+          padding: 0;
         }
 
         .process-card-front__bt {
@@ -251,6 +256,7 @@ export function Process() {
           text-align: center;
           width: 100%;
           overflow: hidden;
+          justify-content: center;
         }
 
         .process-inside-page__btn {
@@ -321,30 +327,11 @@ function ProcessCard({ process, index }: { process: typeof processes[0], index: 
             {/* Card Front */}
             <div className="process-card-front">
               <div className="process-card-front__tp relative overflow-hidden">
-                <img 
-                  src="/hero-gradient.png" 
+                <img
+                  src={process.frontImage}
                   alt={process.category}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="relative z-10 flex flex-col items-center justify-center h-full">
-                  {/* Icon */}
-                  {/* <div className="w-12 h-12 mb-4 flex items-center justify-center mx-auto">
-                    <div className="w-full h-full bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-white text-2xl font-bold">{process.category[0]}</span>
-                    </div>
-                  </div> */}
-                  <h2 className="text-white text-xl font-semibold mt-2 text-center card-front__heading">
-                    {process.category}
-                  </h2>
-                  <p className="text-white/90 text-sm mt-1 text-center card-front__text-price">
-                    {process.title}
-                  </p>
-                </div>
-              </div>
-              <div className="process-card-front__bt" style={{ height: '4rem' }}>
-                <p className="text-base font-bold card-front__text-view" style={{ color: process.pastelColor }}>
-                  View me
-                </p>
               </div>
             </div>
 
@@ -365,23 +352,12 @@ function ProcessCard({ process, index }: { process: typeof processes[0], index: 
         {/* Inside Page */}
         <div className="process-inside-page">
           <div className="process-inside-page__container">
-            <h3 className="text-2xl font-bold mb-4 inside-page__heading" style={{ color: process.pastelColor }}>
+            <h3 className="text-3xl md:text-4xl font-semibold mb-4 inside-page__heading" style={{ color: process.pastelColor }}>
               {process.title}
             </h3>
-            <p className="text-[#252525] text-sm leading-relaxed mb-4 inside-page__text">
+            <p className="text-[#252525] text-base md:text-lg leading-relaxed mb-0 inside-page__text">
               {process.description}
             </p>
-            <a
-              href="#"
-              className="process-inside-page__btn"
-              style={{
-                borderColor: process.pastelColor,
-                color: process.pastelColor,
-                '--btn-color': process.pastelColor
-              } as React.CSSProperties & { '--btn-color': string }}
-            >
-              Learn more
-            </a>
           </div>
         </div>
       </div>
