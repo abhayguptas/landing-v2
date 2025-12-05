@@ -3,9 +3,10 @@ import { useRef, useEffect, useCallback } from 'react'
 
 interface InteractiveGradientProps {
   time: string
+  isLoaded?: boolean
 }
 
-export function InteractiveGradient({ time }: InteractiveGradientProps) {
+export function InteractiveGradient({ time, isLoaded = false }: InteractiveGradientProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   
   // Mouse position tracking
@@ -86,8 +87,8 @@ export function InteractiveGradient({ time }: InteractiveGradientProps) {
     <motion.div 
       ref={containerRef}
       initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1.2, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+      animate={isLoaded ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+      transition={{ duration: 1.2, delay: isLoaded ? 1.0 : 0, ease: [0.16, 1, 0.3, 1] }}
       className="relative w-full h-[130px] md:h-[160px] overflow-hidden mt-auto rounded-t-[1rem]"
     >
       {/* Base dark layer */}

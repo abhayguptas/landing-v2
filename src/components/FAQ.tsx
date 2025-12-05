@@ -8,26 +8,27 @@ import { ArrowRight } from 'lucide-react'
 
 const faqs = [
   {
-    question: 'What is your design process?',
-    answer: 'A structured flow: discover, map, design, refine, deliver.',
+    question: 'How do you approach a new project',
+    answer: 'We begin by understanding the idea. From there we bring structure to it. Clarity first. Systems next. Design and engineering follow once the foundation feels right.',
   },
   {
-    question: 'How long does a project take?',
-    answer: 'Most projects take 6–12 weeks depending on scope.',
+    question: 'How long does the process take',
+    answer: 'Most journeys take 6 to 12 weeks. The timeline shifts based on how deep the product goes. We move with intention and keep the pace steady and predictable.',
   },
   {
-    question: 'Do you work with startups?',
-    answer: 'Yes. We adapt to early-stage speed and constraints.',
+    question: 'Do you work with early stage founders',
+    answer: 'Yes. Renor is built around early ideas that need guidance and structure. We help founders move from uncertainty to a clear path forward.',
   },
   {
-    question: 'What industries do you serve?',
-    answer: 'Any industry that values clarity, structure, and design logic.',
+    question: 'What kind of products do you work on',
+    answer: 'Any product that values clarity and strong systems. SaaS, consumer tools, AI products, education platforms and emerging ideas that need direction.',
   },
   {
-    question: 'Do you handle development?',
-    answer: 'Yes. UI engineering and system implementation are core to our work.',
-  },
-]
+    question: 'Do you also build the product',
+    answer: 'Yes. Design and engineering happen together. We build with clean systems, AI first workflows and a long term plan so what we ship can grow.',
+  }
+];
+
 
 export function FAQ() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
@@ -67,7 +68,7 @@ export function FAQ() {
           className="text-left text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl"
         >
           Common questions{' '}
-          <span className="text-[#252525]/40">you might have.</span>
+          <span className="text-[#252525]/40">you might have</span>
         </motion.h1>
       </div>
 

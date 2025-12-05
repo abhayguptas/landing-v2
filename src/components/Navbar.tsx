@@ -1,20 +1,72 @@
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import type { MouseEvent } from 'react'
+import { useLenis } from 'lenis/react'
 
 interface NavbarProps {
   visible?: boolean
+  isLoaded?: boolean
 }
 
-export function Navbar({ visible = true }: NavbarProps) {
+export function Navbar({ visible = true, isLoaded = false }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const lenis = useLenis()
+
+  type NavSection = 'home' | 'about' | 'pricing'
+
+  const handleNavClick = (section: NavSection) => (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    event.preventDefault()
+
+    const offset = section === 'home' ? 0 : -100
+
+    if (lenis) {
+      // For the sticky hero, scroll directly to the top so "Home" always works
+      if (section === 'home') {
+        lenis.scrollTo(0, {
+          duration: 1.2,
+          offset,
+          easing: (t: number) => Math.min(1, 1.001 - 2 ** (-10 * t)),
+        })
+      } else {
+        const targetElement = document.getElementById(section)
+        if (!targetElement) return
+
+        lenis.scrollTo(targetElement, {
+          duration: 1.2,
+          offset,
+          easing: (t: number) => Math.min(1, 1.001 - 2 ** (-10 * t)),
+        })
+      }
+    } else {
+      if (section === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        const targetElement = document.getElementById(section)
+        if (!targetElement) return
+
+        const rect = targetElement.getBoundingClientRect()
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+        const targetY = rect.top + scrollTop + offset
+
+        window.scrollTo({ top: targetY, behavior: 'smooth' })
+      }
+    }
+
+    setIsMenuOpen(false)
+  }
+
+  const navItems: { label: string; section: NavSection }[] = [
+    { label: 'Home', section: 'home' },
+    { label: 'About', section: 'about' },
+    { label: 'Pricing', section: 'pricing' },
+  ]
 
   return (
     <>
       <motion.nav 
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
+        animate={isLoaded ? { y: visible ? 0 : -100, opacity: visible ? 1 : 0 } : { y: -100, opacity: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 left-0 right-0 z-50 px-6 py-8 flex justify-between items-start pointer-events-none"
       >
@@ -30,39 +82,42 @@ export function Navbar({ visible = true }: NavbarProps) {
         {/* Desktop Menu */}
         <motion.div 
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+            transition={{ duration: 0.8, delay: isLoaded ? 0.5 : 0, ease: [0.16, 1, 0.3, 1] }}
             className="hidden md:flex items-center bg-[#6b6a63] rounded-2xl p-1.5 pl-6 pr-1.5 gap-4 pointer-events-auto"
         >
           <div className="flex gap-5 text-[#faf8f5] font-medium text-base leading-[1.4]">
-              {["Home", "About", "Pricing"].map((item, i) => (
-                  <motion.a 
-                    key={item}
-                    href="#" 
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={isLoaded ? { duration: 0.1 } : { duration: 0.5, delay: 0.8 + (i * 0.1), ease: [0.16, 1, 0.3, 1] }}
-                    className="relative hover:text-white transition-colors group inline-block"
-                    whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
-                    style={{ transformOrigin: "center" }}
-                  >
-                    {item}
-                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#faf8f5] transition-all duration-300 group-hover:w-full" />
-                  </motion.a>
-              ))}
+            {navItems.map((item, index) => (
+              <motion.button
+                key={item.label}
+                type="button"
+                onClick={handleNavClick(item.section)}
+                initial={{ opacity: 0, y: -10 }}
+                animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+                transition={isLoaded ? { duration: 0.5, delay: 0.8 + (index * 0.1), ease: [0.16, 1, 0.3, 1] } : { duration: 0 }}
+                className="relative hover:text-white transition-colors group inline-block cursor-pointer bg-transparent border-none p-0"
+                whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
+                style={{ transformOrigin: 'center' }}
+              >
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#faf8f5] transition-all duration-300 group-hover:w-full" />
+              </motion.button>
+            ))}
           </div>
           <motion.button 
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ 
+              animate={isLoaded ? { 
                   opacity: 1, 
                   scale: 1 
+              } : {
+                  opacity: 0,
+                  scale: 0.9
               }}
-              transition={isLoaded ? { duration: 0.1 } : { 
+              transition={isLoaded ? { 
                   duration: 0.5, 
                   delay: 1.1,
                   ease: [0.16, 1, 0.3, 1]
-              }}
-              onAnimationComplete={() => setIsLoaded(true)}
+              } : { duration: 0 }}
               whileHover={{ 
                   scale: 1.02,
                   backgroundColor: "#faf8f5",
@@ -108,9 +163,15 @@ export function Navbar({ visible = true }: NavbarProps) {
               </button>
             </div>
             <div className="flex flex-col items-center justify-center flex-1 gap-8 text-2xl font-medium text-[#252525]">
-              <a href="#" onClick={() => setIsMenuOpen(false)}>Home</a>
-              <a href="#" onClick={() => setIsMenuOpen(false)}>About</a>
-              <a href="#" onClick={() => setIsMenuOpen(false)}>Pricing</a>
+              <button type="button" onClick={handleNavClick('home')}>
+                Home
+              </button>
+              <button type="button" onClick={handleNavClick('about')}>
+                About
+              </button>
+              <button type="button" onClick={handleNavClick('pricing')}>
+                Pricing
+              </button>
               <button className="bg-[#252525] text-white px-8 py-3 rounded-full mt-4">
                 CONTACT
               </button>

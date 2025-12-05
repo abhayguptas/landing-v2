@@ -4,6 +4,7 @@ import { Entropy } from '@/components/ui/entropy'
 export function About() {
   return (
     <section 
+      id="about"
       className="relative z-10 w-full bg-[#faf8f5]"
     >
       <div className="flex flex-col px-6 md:px-12 lg:px-24 py-24 md:py-32">
@@ -36,7 +37,7 @@ export function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             className="text-left text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl"
           >
-            Meet Renor{' '}
+            Meet Renor,{' '}
             <span className="text-[#252525]/40">a studio shaped by intention.</span>
           </motion.h1>
         </div>
@@ -59,15 +60,11 @@ export function About() {
             
             {/* Static heading (no scroll-based word reveal) */}
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight mb-10">
-              Renor builds clear digital systems shaped with intention. We design and engineer products
-              that are structured, dependable, and built to scale.
+              Renor builds digital systems shaped with intention. We design and engineer products that are structured, dependable, and built to scale.
             </h3>
-
             {/* Static paragraph (no scroll-based word reveal) */}
             <p className="text-lg md:text-xl text-[#252525]/80 leading-relaxed">
-              Our work is guided by clarity and reduction. We remove noise, create predictable flows, and craft interfaces
-              that feel balanced and precise. Every product we build is rooted in strong design logic and clean engineering
-              practices that last beyond the first release.
+              Our approach is rooted in clarity and reduction. We remove noise, create predictable flows, and craft interfaces that feel balanced and precise. Each product is grounded in strong design logic and clean engineering practices that last beyond the first release.
             </p>
 
           </div>

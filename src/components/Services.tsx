@@ -1,56 +1,124 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, memo } from 'react'
 import { easing, durations, delays } from '../styles/tokens'
+import { useLenis } from 'lenis/react'
 
 const services = [
   { 
-    name: 'Brand Identity', 
+    name: 'Building the Foundation', 
     number: '1',
-    description: 'We craft cohesive brand systems that communicate who you are with clarity and intention, from the core idea to every visual expression.',
-    tags: ['Logo Design', 'Visual Identity Systems', 'Brand Guidelines', 'Typography & Color Systems', 'Naming & Tone of Voice', 'Brand Strategy'],
+    description: 'Every product begins with clarity. We shape identity systems that give your idea a strong foundation and a clear point of view. The goal is simple. Create a brand that feels intentional and grows with the product you are building.',
+    tags: [
+      'Logo Design',
+      'Identity Systems',
+      'Brand Guidelines',
+      'Typography and Color Systems',
+      'Naming and Voice',
+      'Brand Strategy'
+    ],
     images: [
-      'https://source.unsplash.com/Ps5uw0KSIFo/800x1000',
-      'https://cosmos.so/api/image/677246480'
+      './rock.png',
     ]
   },
+
   { 
-    name: 'Digital Design', 
+    name: 'Designing the Product', 
     number: '2',
-    description: 'We design intuitive digital experiences that balance aesthetics with functionality, creating interfaces that users love to interact with.',
-    tags: ['Web Design', 'Mobile App Design', 'UI/UX Design', 'Design Systems', 'Prototyping', 'User Research'],
+    description: 'We design products that feel structured and effortless. Every screen, interaction and flow is crafted with intention. The result is a digital experience that users trust and engineering teams can build on without friction.',
+    tags: [
+      'Product Design',
+      'Web and App Interfaces',
+      'UI and UX Design',
+      'Design Systems',
+      'Prototyping',
+      'User Research'
+    ],
     images: [
       'https://cosmos.so/api/image/980384645',
       'https://cosmos.so/api/image/867651876'
     ]
   },
+
   { 
-    name: 'Art Direction', 
+    name: 'Engineering the System', 
     number: '3',
-    description: 'We define the visual language and creative direction that brings your brand to life across all touchpoints and campaigns.',
-    tags: ['Creative Direction', 'Visual Storytelling', 'Campaign Design', 'Photography Direction', 'Motion Graphics', 'Content Strategy'],
-    images: [
-      'https://cosmos.so/api/image/1877684951',
-      'https://cosmos.so/api/image/1067858081'
-    ]
-  },
-  { 
-    name: 'Strategy & Consulting', 
-    number: '4',
-    description: 'We help you define clear goals, identify opportunities, and build roadmaps that align design with business objectives.',
-    tags: ['Brand Strategy', 'Product Strategy', 'Market Research', 'Competitive Analysis', 'Workshop Facilitation', 'Growth Planning'],
+    description: 'A clear idea needs a dependable system behind it. We help founders define strategy, map technical architecture and build with clean engineering practices. From AI first workflows to long term planning, we make sure what you ship can grow.',
+    tags: [
+      'Product Strategy',
+      'Technical Architecture',
+      'AI First Development',
+      'System Planning',
+      'Workshops and Discovery',
+      'Long Term Product Roadmaps'
+    ],
     images: [
       'https://cosmos.so/api/image/1935260750',
       'https://cosmos.so/api/image/1516216588'
     ]
   },
-]
+
+  { 
+    name: 'Preparing for Growth', 
+    number: '4',
+    description: 'Once the product is built, we help you bring it to the world with confidence. Positioning, messaging, growth systems and content shaped through Keizer. Everything crafted to help your product reach the right audience and scale with clarity.',
+    tags: [
+      'Go To Market Strategy',
+      'Positioning and Messaging',
+      'Growth Systems',
+      'Content and Campaigns',
+      'Pitch and Funding Prep',
+      'Market Research'
+    ],
+    images: [
+      'https://cosmos.so/api/image/1877684951',
+      'https://cosmos.so/api/image/1067858081'
+    ]
+  }
+];
+
 
 export function Services() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const lenis = useLenis()
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index)
+  }
+
+  const handlePricingClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    
+    const scrollToPricing = () => {
+      const pricingElement = document.getElementById('pricing')
+      
+      if (!pricingElement) {
+        // Retry after delay if element not found (for lazy loading)
+        setTimeout(scrollToPricing, 200)
+        return
+      }
+
+      if (lenis) {
+        // Use Lenis smooth scroll
+        lenis.scrollTo(pricingElement, {
+          duration: 1.5,
+          offset: -100,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        })
+      } else {
+        // Fallback to native smooth scroll with offset
+        const elementPosition = pricingElement.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - 100
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
+    }
+    
+    // Small delay to ensure Pricing component is mounted
+    setTimeout(scrollToPricing, 50)
   }
 
   return (
@@ -77,8 +145,8 @@ export function Services() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="text-left text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl"
         >
-          What we offer{' '}
-          <span className="text-[#252525]/40">to help you succeed.</span>
+          We help founders move from idea to clarity,{' '}
+          <span className="text-[#252525]/40">from clarity to product, and from product to scale</span>
         </motion.h1>
       </div>
 
@@ -101,13 +169,45 @@ export function Services() {
 
         {/* CTA Button */}
         <div>
-          <a 
+          <motion.a 
             href="#pricing"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#faf8f5] text-[#262626] text-sm font-medium rounded-full hover:bg-white transition-colors"
+            onClick={handlePricingClick}
+            whileHover="hover"
+            whileTap="tap"
+            variants={{
+              hover: { scale: 1.08 },
+              tap: { scale: 0.96 }
+            }}
+            transition={{ duration: durations.quick, ease: easing.smooth }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#faf8f5] text-[#262626] text-sm font-medium rounded-full hover:bg-white transition-colors cursor-pointer overflow-hidden relative group"
           >
-            See pricing
-            <span className="text-base leading-none">+</span>
-          </a>
+            <motion.span
+              variants={{
+                hover: { x: 2 }
+              }}
+              transition={{ duration: durations.quick, ease: easing.smooth }}
+              className="inline-flex items-center gap-2"
+            >
+              <motion.span
+                variants={{
+                  hover: { letterSpacing: '0.08em', x: 2 }
+                }}
+                transition={{ duration: durations.quick, ease: easing.smooth }}
+                className="inline-block"
+              >
+                See pricing
+              </motion.span>
+              <motion.span 
+                variants={{
+                  hover: { rotate: 90, scale: 1.2, x: 2 }
+                }}
+                transition={{ duration: durations.quick, ease: easing.smooth }}
+                className="text-base leading-none inline-block origin-center"
+              >
+                +
+              </motion.span>
+            </motion.span>
+          </motion.a>
         </div>
       </div>
     </section>
@@ -132,12 +232,12 @@ const ServiceItem = memo(({
   return (
     <div className="relative">
       {/* Service Header */}
-      <div className="group relative h-fit w-full overflow-visible">
+      <div className="relative h-fit w-full overflow-visible">
         <button
           onClick={() => toggleExpand(index)}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
-          className="w-full flex justify-between items-center py-3 md:py-4 cursor-pointer relative z-10"
+          className="group w-full flex justify-between items-center py-3 md:py-4 cursor-pointer relative z-10"
         >
           <div className="relative">
             <h3 

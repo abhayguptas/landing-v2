@@ -90,8 +90,14 @@ export function Footer() {
         {/* Right Content */}
         <motion.div 
           variants={containerVariants}
-          className="lg:col-span-8 flex flex-col justify-end px-6 md:px-12 lg:px-16 py-12 lg:py-16"
+          className="lg:col-span-8 flex flex-col justify-between px-6 md:px-12 lg:px-14 py-12 lg:py-16"
         >
+          {/* Large Renor Text */}
+          <motion.div variants={itemVariants} className="mb-auto">
+            <h2 className="text-[32vw] sm:text-[26vw] md:text-[22vw] lg:text-[18vw] xl:text-[16vw] font-bold text-[#faf8f5] leading-[0.85] tracking-tight text-left lg:-ml-5">
+              Renor
+            </h2>
+          </motion.div>
           
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             {/* CTA */}

@@ -3,8 +3,9 @@ import { Hero } from './components/Hero'
 import { About } from './components/About'
 import { Testimonials } from './components/Testimonials'
 import { SmoothScroll } from './components/SmoothScroll'
+import { LoadingScreen } from './components/LoadingScreen'
 import { useInView } from 'framer-motion'
-import { useRef, lazy, Suspense } from 'react'
+import { useRef, lazy, Suspense, useState } from 'react'
 
 // Lazy load heavy components for code splitting
 // Note: Testimonials loads eagerly due to Three.js initialization requirements
@@ -27,44 +28,52 @@ const ComponentLoader = () => (
 function App() {
   const studioRevealRef = useRef<HTMLDivElement>(null)
   const isStudioRevealInView = useInView(studioRevealRef, { amount: 0.3 })
+  const [isLoading, setIsLoading] = useState(true)
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false)
+  }
 
   return (
-    <SmoothScroll>
-      <div className="min-h-screen w-full bg-[#faf8f5] text-[#252525] font-sans selection:bg-[#252525] selection:text-[#faf8f5]">
-        <Navbar visible={!isStudioRevealInView} />
-        <main>
-          <Hero />
-          <About />
-          <div ref={studioRevealRef}>
+    <>
+      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
+      <SmoothScroll>
+        <div className="min-h-screen w-full bg-[#faf8f5] text-[#252525] font-sans selection:bg-[#252525] selection:text-[#faf8f5]">
+          <Navbar visible={!isStudioRevealInView} isLoaded={!isLoading} />
+          <main>
+            <Hero isLoaded={!isLoading} />
+            <About />
+            <div ref={studioRevealRef}>
+              <Suspense fallback={<ComponentLoader />}>
+                <StudioReveal />
+              </Suspense>
+            </div>
             <Suspense fallback={<ComponentLoader />}>
-              <StudioReveal />
+              <Services />
             </Suspense>
-          </div>
-          <Suspense fallback={<ComponentLoader />}>
-            <Services />
-          </Suspense>
-          <Suspense fallback={<ComponentLoader />}>
-            <Process />
-          </Suspense>
-          <Suspense fallback={<ComponentLoader />}>
-            <WhyUs />
-          </Suspense>
-          <Suspense fallback={<ComponentLoader />}>
-            <OurWork />
-          </Suspense>
-          <Testimonials />
-          <Suspense fallback={<ComponentLoader />}>
-            <Pricing />
-          </Suspense>
-          <Suspense fallback={<ComponentLoader />}>
-            <FAQ />
-          </Suspense>
-          <Suspense fallback={<ComponentLoader />}>
-            <Footer />
-          </Suspense>
-        </main>
-      </div>
-    </SmoothScroll>
+            <Suspense fallback={<ComponentLoader />}>
+              <Process />
+            </Suspense>
+            <Suspense fallback={<ComponentLoader />}>
+              <WhyUs />
+            </Suspense>
+            <Suspense fallback={<ComponentLoader />}>
+              <OurWork />
+            </Suspense>
+            <Testimonials />
+            <Suspense fallback={<ComponentLoader />}>
+              <Pricing />
+            </Suspense>
+            <Suspense fallback={<ComponentLoader />}>
+              <FAQ />
+            </Suspense>
+            <Suspense fallback={<ComponentLoader />}>
+              <Footer />
+            </Suspense>
+          </main>
+        </div>
+      </SmoothScroll>
+    </>
   )
 }
 

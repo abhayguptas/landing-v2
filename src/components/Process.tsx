@@ -7,19 +7,7 @@ const processes = [
     category: 'Experiential',
     title: 'Seed',
     description:
-      'We begin by shaping clarity. Your idea is refined into a focused, actionable product plan with the essentials defined: users, flows, constraints, and outcomes.',
-    services: [
-      'Creative and Design Direction',
-      'Moodboards',
-      'Stage Design',
-      'Retail Design',
-      'Floorplans',
-      'Structural Design',
-      'CAD Renders',
-      'High Res 3D Mocks',
-      'Fabrication Plans',
-      'Permitting & Compliance Consulting'
-    ],
+      'We begin by shaping clarity. Your idea is explored, understood and refined into a focused product direction. The essentials are defined with intention so the product can grow with stability.',
     gradient: 'from-[#ff4d00] to-[#ff6d33]',
     color: '#ff4d00',
     pastelColor: '#262626',
@@ -29,13 +17,7 @@ const processes = [
     category: 'Digital',
     title: 'Shape',
     description:
-      'We turn direction into structure. Design, architecture, and early functionality take form as the product starts to look and behave like something real.',
-    services: [
-      '3D Modelling',
-      'Motion & Animation',
-      'User Experience / Interface',
-      'Development'
-    ],
+      'We turn direction into structure. Design, architecture and early functionality take form as the product begins to look and behave like something real. The system gains shape and definition.',
     gradient: 'from-[#0066ff] to-[#3385ff]',
     color: '#0066ff',
     pastelColor: '#262626',
@@ -45,20 +27,14 @@ const processes = [
     category: 'Brand',
     title: 'Bloom',
     description:
-      'We bring the full product to life. A complete, working product is delivered with precision and clarity—stable, dependable, and built for long-term growth.',
-    services: [
-      'Brand Strategy',
-      'Visual Identity',
-      'Logo Design',
-      'Brand Guidelines',
-      'Typography & Color Systems'
-    ],
+      'We bring the full product to life. A complete and dependable system is delivered with clarity. Stable, precise and ready for long term growth.',
     gradient: 'from-[#ffea00] to-[#fff033]',
     color: '#ffea00',
     pastelColor: '#262626',
     frontImage: '/p3.png'
   }
-]
+];
+
 
 export function Process() {
   return (

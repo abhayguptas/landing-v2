@@ -5,7 +5,11 @@ import { InteractiveGradient } from './InteractiveGradient'
 // Pre-compute marquee words array to avoid creating on every render
 const MARQUEE_WORDS = Array(16).fill(null).flatMap(() => ["Start.", "Build.", "Scale."])
 
-export function Hero() {
+interface HeroProps {
+  isLoaded?: boolean
+}
+
+export function Hero({ isLoaded = false }: HeroProps) {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 1000], [0, -400])
 
@@ -28,7 +32,7 @@ export function Hero() {
   }, [])
 
   return (
-    <motion.div style={{ y }} className="sticky top-0 z-0 min-h-screen w-full flex flex-col pt-32">
+    <motion.div id="home" style={{ y }} className="sticky top-0 z-0 min-h-screen w-full flex flex-col pt-32">
       
       {/* Main Content */}
       <div className="flex-1 px-6 md:px-12 lg:px-24 flex flex-col relative">
@@ -40,10 +44,10 @@ export function Hero() {
                     <motion.span
                         key={i}
                         initial={{ opacity: 0, y: 80 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
                         transition={{ 
                             duration: 0.8, 
-                            delay: 0.1 + i * 0.08,
+                            delay: isLoaded ? 0.1 + i * 0.08 : 0,
                             ease: [0.16, 1, 0.3, 1] 
                         }}
                         className="inline-block"
@@ -55,8 +59,8 @@ export function Hero() {
 
             <motion.div 
                 initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                animate={isLoaded ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                transition={{ duration: 1.2, delay: isLoaded ? 0.3 : 0, ease: [0.16, 1, 0.3, 1] }}
                 className="mt-8 lg:mt-0 text-right text-[#252525] font-medium text-sm md:text-base max-w-xs ml-auto"
             >
                 <p>RE•NOR SYSTEMS</p>
@@ -68,8 +72,8 @@ export function Hero() {
         {/* Description */}
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 1.2, delay: isLoaded ? 0.5 : 0, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-lg text-[#252525] text-lg md:text-xl font-medium leading-relaxed mb-12 md:mb-16 ml-2"
         >
             <p>Renorlabs crafts clear brands and durable digital products with design and engineering in balance.</p>
@@ -78,8 +82,8 @@ export function Hero() {
         {/* Marquee Section */}
         <motion.div 
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            animate={isLoaded ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 1.5, delay: isLoaded ? 0.8 : 0, ease: [0.16, 1, 0.3, 1] }}
             className="w-full py-6 md:py-8 flex items-center justify-between relative mb-4 md:mb-8 gap-8"
         >
              {/* Marquee Track */}
@@ -135,7 +139,7 @@ export function Hero() {
       </div>
 
       {/* Bottom Interactive Gradient Section */}
-      <InteractiveGradient time={time} />
+      <InteractiveGradient time={time} isLoaded={isLoaded} />
 
     </motion.div>
   )
