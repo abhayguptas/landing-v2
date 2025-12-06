@@ -3,9 +3,8 @@ import { Hero } from './components/Hero'
 import { About } from './components/About'
 import { Testimonials } from './components/Testimonials'
 import { SmoothScroll } from './components/SmoothScroll'
-import { LoadingScreen } from './components/LoadingScreen'
 import { useInView } from 'framer-motion'
-import { useRef, lazy, Suspense, useState } from 'react'
+import { useRef, lazy, Suspense } from 'react'
 
 // Lazy load heavy components for code splitting
 // Note: Testimonials loads eagerly due to Three.js initialization requirements
@@ -28,20 +27,13 @@ const ComponentLoader = () => (
 function App() {
   const studioRevealRef = useRef<HTMLDivElement>(null)
   const isStudioRevealInView = useInView(studioRevealRef, { amount: 0.3 })
-  const [isLoading, setIsLoading] = useState(true)
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false)
-  }
 
   return (
-    <>
-      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
-      <SmoothScroll>
-        <div className="min-h-screen w-full bg-[#faf8f5] text-[#252525] font-sans selection:bg-[#252525] selection:text-[#faf8f5]">
-          <Navbar visible={!isStudioRevealInView} isLoaded={!isLoading} />
-          <main>
-            <Hero isLoaded={!isLoading} />
+    <SmoothScroll>
+      <div className="min-h-screen w-full bg-[#faf8f5] text-[#252525] font-sans selection:bg-[#252525] selection:text-[#faf8f5]">
+        <Navbar visible={!isStudioRevealInView} isLoaded={true} />
+        <main>
+          <Hero isLoaded={true} />
             <About />
             <div ref={studioRevealRef}>
               <Suspense fallback={<ComponentLoader />}>
@@ -54,9 +46,9 @@ function App() {
             <Suspense fallback={<ComponentLoader />}>
               <Process />
             </Suspense>
-            <Suspense fallback={<ComponentLoader />}>
+            {/* <Suspense fallback={<ComponentLoader />}>
               <WhyUs />
-            </Suspense>
+            </Suspense> */}
             <Suspense fallback={<ComponentLoader />}>
               <OurWork />
             </Suspense>
@@ -70,10 +62,9 @@ function App() {
             <Suspense fallback={<ComponentLoader />}>
               <Footer />
             </Suspense>
-          </main>
-        </div>
-      </SmoothScroll>
-    </>
+        </main>
+      </div>
+    </SmoothScroll>
   )
 }
 

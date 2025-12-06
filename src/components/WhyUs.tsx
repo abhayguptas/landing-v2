@@ -3,7 +3,7 @@ import { Zap, Feather, Clock } from 'lucide-react'
 
 export function WhyUs() {
   return (
-    <section className="relative w-full bg-[#faf8f5] px-6 md:px-12 lg:px-24 py-24 md:py-32">
+    <section className="relative w-full bg-[#faf8f5] px-4 md:px-12 lg:px-24 py-24 md:py-32">
       
       {/* Section Label */}
       <motion.div 
@@ -24,19 +24,19 @@ export function WhyUs() {
         </span>
       </motion.div>
 
-      {/* Main Heading */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-16 md:mb-20"
-      >
-        <h3 className="text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl">
+      {/* Header Section */}
+      <div className="relative flex h-[30vh] items-center justify-start mb-6 md:mb-8">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          className="text-left text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl"
+        >
           We cut through noise to create designs that are{' '}
           <span className="text-[#252525]/40">thoughtful, timeless, and impactful.</span>
-        </h3>
-      </motion.div>
+        </motion.h1>
+      </div>
 
       {/* Bento Grid */}
       <div className="mt-38 bg-[#262626] rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8">
@@ -195,7 +195,7 @@ export function WhyUs() {
                     fontWeight="500"
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    fontFamily="system-ui, -apple-system, sans-serif"
+                    fontFamily="'Space Grotesk', sans-serif"
                     letterSpacing="0.5px"
                     opacity="0.9"
                   >
@@ -211,7 +211,7 @@ export function WhyUs() {
                     fontWeight="500"
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    fontFamily="system-ui, -apple-system, sans-serif"
+                    fontFamily="'Space Grotesk', sans-serif"
                     letterSpacing="0.5px"
                     opacity="0.9"
                   >

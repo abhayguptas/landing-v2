@@ -4,7 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-public-sans: 'Public Sans', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Manrope', sans-serif;
   --color-background: #faf8f5;
   --color-foreground: #252525;
   --color-muted: #6b6a63;
@@ -44,7 +45,8 @@
 }
 
 @theme {
-  --font-sans: var(--font-public-sans);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
   --color-background: var(--color-background);
   --color-foreground: var(--color-foreground);
   --color-muted: var(--color-muted);
@@ -53,16 +55,20 @@
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
-/* Font loading optimization */
-@font-face {
-  font-family: 'Public Sans';
-  font-display: swap;
+/* Typography - Headings use Space Grotesk */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Body text uses Manrope */
+body, p, span, div, a, button, input, textarea, select, label {
+  font-family: var(--font-body);
 }
 
 /* Lenis recommended styles */
@@ -186,6 +192,10 @@ html.lenis, html.lenis body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
   
   /* Grainy texture pattern for pricing cards */

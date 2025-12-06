@@ -122,7 +122,7 @@ export function Services() {
   }
 
   return (
-    <section className="relative w-full bg-[#faf8f5] px-6 md:px-12 lg:px-24 py-16 md:py-24">
+    <section className="relative w-full bg-[#faf8f5] px-4 md:px-12 lg:px-24 py-16 md:py-24">
       {/* Section Label */}
       <div className="flex justify-between items-center w-full mb-12 md:mb-16">
         <div className="flex flex-col items-start gap-1">
@@ -145,8 +145,8 @@ export function Services() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="text-left text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl"
         >
-          We help founders move from idea to clarity,{' '}
-          <span className="text-[#252525]/40">from clarity to product, and from product to scale</span>
+          We guide founders from idea to product and{' '}
+          <span className="text-[#252525]/40">from product to scale</span>
         </motion.h1>
       </div>
 

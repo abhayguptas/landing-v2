@@ -232,99 +232,96 @@ export function Pricing() {
         </span>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="relative flex h-[30vh] items-center justify-start mb-6 md:mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl">
-              Pricing Plans.{' '}
-              <span className="text-[#252525]/40">Choose what works for you.</span>
-            </h1>
-          </motion.div>
-        </div>
-
-        {/* Toggle Switch */}
-        <motion.div
+      {/* Header Section */}
+      <div className="relative flex h-[30vh] items-center justify-start mb-6 md:mb-8">
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-end mb-8 mr-1"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          className="text-left text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl"
         >
-          <div className="relative inline-flex items-center gap-1 bg-[#252525]/5 rounded-full p-2 border border-[#252525]/10">
-            {/* Sliding Background Indicator */}
-            <motion.div
-              layoutId="toggle-indicator"
-              className="absolute inset-2 rounded-full bg-[#252525] z-0"
-              initial={false}
-              transition={{
-                type: "spring",
-                stiffness: 500,
-                damping: 30,
-                mass: 0.5
-              }}
-              style={{
-                left: `${plans.findIndex(p => p.name === selectedPlan) * (100 / plans.length)}%`,
-                width: `${100 / plans.length}%`
-              }}
-            />
+          Pricing Plans,{' '}
+          <span className="text-[#252525]/40">Choose what works for you</span>
+        </motion.h1>
+      </div>
+
+      {/* Toggle Switch */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="flex justify-end mb-8 mr-1"
+      >
+        <div className="relative inline-flex items-center gap-1 bg-[#252525]/5 rounded-full p-2 border border-[#252525]/10">
+          {/* Sliding Background Indicator */}
+          <motion.div
+            layoutId="toggle-indicator"
+            className="absolute inset-2 rounded-full bg-[#252525] z-0"
+            initial={false}
+            transition={{
+              type: "spring",
+              stiffness: 500,
+              damping: 30,
+              mass: 0.5
+            }}
+            style={{
+              left: `${plans.findIndex(p => p.name === selectedPlan) * (100 / plans.length)}%`,
+              width: `${100 / plans.length}%`
+            }}
+          />
+          
+          {plans.map((plan) => {
+            const isSelected = selectedPlan === plan.name
             
-            {plans.map((plan) => {
-              const isSelected = selectedPlan === plan.name
-              
-              return (
-                <motion.button
-                  key={plan.id}
-                  onClick={() => setSelectedPlan(plan.name)}
-                  className="relative z-10 px-6 py-2 rounded-full text-sm font-medium"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+            return (
+              <motion.button
+                key={plan.id}
+                onClick={() => setSelectedPlan(plan.name)}
+                className="relative z-10 px-6 py-2 rounded-full text-sm font-medium"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 25
+                }}
+              >
+                <motion.span
+                  className="relative z-10 block"
+                  animate={{
+                    color: isSelected ? '#ffffff' : 'rgba(37, 37, 37, 0.6)'
+                  }}
                   transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 25
+                    duration: 0.2,
+                    ease: [0.16, 1, 0.3, 1]
                   }}
                 >
-                  <motion.span
-                    className="relative z-10 block"
-                    animate={{
-                      color: isSelected ? '#ffffff' : 'rgba(37, 37, 37, 0.6)'
-                    }}
-                    transition={{
-                      duration: 0.2,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                  >
-                    {plan.name}
-                  </motion.span>
-                </motion.button>
-              )
-            })}
-          </div>
-        </motion.div>
+                  {plan.name}
+                </motion.span>
+              </motion.button>
+            )
+          })}
+        </div>
+      </motion.div>
 
-        {/* Single Pricing Card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPlan.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-          >
-            <PricingCard
-              plan={currentPlan}
-              addonEnabled={addonsEnabled[currentPlan.id]}
-              onAddonToggle={() => toggleAddon(currentPlan.id)}
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
+      {/* Single Pricing Card */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentPlan.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+        >
+          <PricingCard
+            plan={currentPlan}
+            addonEnabled={addonsEnabled[currentPlan.id]}
+            onAddonToggle={() => toggleAddon(currentPlan.id)}
+          />
+        </motion.div>
+      </AnimatePresence>
     </section>
   )
 }

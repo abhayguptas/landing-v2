@@ -7,7 +7,7 @@ export function About() {
       id="about"
       className="relative z-10 w-full bg-[#faf8f5]"
     >
-      <div className="flex flex-col px-6 md:px-12 lg:px-24 py-24 md:py-32">
+      <div className="flex flex-col px-4 md:px-12 lg:px-24 py-24 md:py-32">
         
         {/* Section Label */}
         <motion.div 
@@ -38,7 +38,7 @@ export function About() {
             className="text-left text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl"
           >
             Meet Renor,{' '}
-            <span className="text-[#252525]/40">a studio shaped by intention.</span>
+            <span className="text-[#252525]/40">a studio shaped by intention</span>
           </motion.h1>
         </div>
 
