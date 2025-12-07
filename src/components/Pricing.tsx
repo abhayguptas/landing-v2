@@ -212,7 +212,8 @@ export function Pricing() {
   const currentPlan = plans.find(plan => plan.name === selectedPlan) || plans[0]
 
   return (
-    <section id="pricing" className="relative w-full bg-[#faf8f5] px-4 md:px-12 lg:px-24 pt-0 md:pt-0 pb-24 md:pb-32">
+    <section id="pricing" className="relative w-full bg-[#faf8f5]">
+      <div className="flex flex-col px-4 md:px-12 lg:px-24 pt-0 md:pt-0 pb-12 md:pb-16">
       {/* Section Label */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -322,6 +323,10 @@ export function Pricing() {
           />
         </motion.div>
       </AnimatePresence>
+
+      {/* Bottom Line */}
+      <div className="w-full border-t border-dotted border-[#252525]/40 mt-16 md:mt-24" />
+      </div>
     </section>
   )
 }

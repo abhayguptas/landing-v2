@@ -39,17 +39,6 @@ export function StudioReveal() {
   return (
     <section ref={containerRef} className="relative z-20 h-[300vh] bg-[#faf8f5]">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-        
-        {/* Keep Scrolling Indicator */}
-        <motion.div 
-            style={{ opacity: keepScrollingOpacity }}
-            className="absolute top-16 left-1/2 -translate-x-1/2 z-30"
-        >
-            <span className="text-sm md:text-base font-medium tracking-[0.3em] uppercase text-[#252525]/60">
-                Keep Scrolling
-            </span>
-        </motion.div>
-        
         {/* Text Layer - equal gaps on both sides */}
         <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
             <div className="flex items-center">

@@ -34,12 +34,12 @@ function App() {
         <Navbar visible={!isStudioRevealInView} isLoaded={true} />
         <main>
           <Hero isLoaded={true} />
-            <About />
-            <div ref={studioRevealRef}>
+          <div ref={studioRevealRef}>
               <Suspense fallback={<ComponentLoader />}>
                 <StudioReveal />
               </Suspense>
-            </div>
+          </div>
+            <About />
             <Suspense fallback={<ComponentLoader />}>
               <Services />
             </Suspense>

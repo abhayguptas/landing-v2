@@ -1,7 +1,10 @@
 'use client'
 
+import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
+import { useScrollReveal } from '../hooks/useScrollReveal'
+import { useParallaxScroll } from '../hooks/useParallaxScroll'
 
 interface Project {
   id: number
@@ -35,10 +38,18 @@ const projects: Project[] = [
 ]
 
 export function OurWork() {
+  const projectsContainerRef = useScrollReveal('.project-item', {
+    direction: 'up',
+    distance: 60,
+    stagger: 0.15,
+    duration: 0.8,
+  })
+
   return (
-    <section className="relative w-full bg-[#faf8f5]">
+    <section ref={projectsContainerRef} className="relative w-full bg-[#faf8f5]">
+      <div className="flex flex-col">
       {/* Section Label */}
-      <div className="relative z-10 px-4 md:px-12 lg:px-24 pt-24 md:pt-32 pb-12 md:pb-16">
+      <div className="relative z-10 px-4 md:px-12 lg:px-24 pt-24 md:pt-32 pb-12 md:pb-16 flex-shrink-0">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,62 +84,75 @@ export function OurWork() {
       </div>
 
       {/* Projects Grid */}
-      <div className="px-4 md:px-12 lg:px-24 pb-24 md:pb-32">
+      <div className="px-4 md:px-12 lg:px-24 pb-24 md:pb-32 flex-1">
         <div className="flex flex-col">
           {projects.map((project, index) => (
-            <motion.div
+            <ProjectItem
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.1,
-                ease: [0.16, 1, 0.3, 1] as [number, number, number, number] 
-              }}
-              className={index !== projects.length - 1 ? 'border-b border-dotted border-[#252525]/30 pb-12 md:pb-16 mb-12 md:mb-16' : ''}
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                {/* Left Column - Text */}
-                <div className="flex flex-col justify-between min-h-[300px] md:min-h-[350px]">
-                  <div className="flex flex-col gap-4">
-                    <p className="text-xs md:text-sm font-medium text-[#252525]/60 uppercase tracking-wider">
-                      {project.label}
-                    </p>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#252525] leading-tight">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <p className="text-sm md:text-base text-[#252525]/60">
-                    {project.location} • {project.date}
-                  </p>
-                </div>
-
-                {/* Right Column - Image */}
-                <div className="relative group">
-                  <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
-                    <img
-                      src={project.image}
-                      alt={project.alt}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    {/* View More Details Button */}
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="absolute bottom-4 right-4 bg-[#faf8f5]/95 backdrop-blur-sm text-[#252525] px-4 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 shadow-lg border border-[#252525]/10 hover:bg-[#faf8f5] transition-colors"
-                    >
-                      View More Details
-                      <ArrowUpRight className="w-4 h-4" />
-                    </motion.button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              project={project}
+              index={index}
+              isLast={index === projects.length - 1}
+            />
           ))}
         </div>
       </div>
+
+      {/* Bottom Line */}
+      <div className="px-4 md:px-12 lg:px-24">
+        <div className="w-full border-t border-dotted border-[#252525]/40 mt-16 md:mt-24" />
+      </div>
+      </div>
     </section>
+  )
+}
+
+function ProjectItem({ project, isLast }: { project: typeof projects[0], index: number, isLast: boolean }) {
+  const imageRef = useParallaxScroll({
+    speed: 0.3,
+    direction: 'up',
+  }) as React.RefObject<HTMLDivElement>
+
+  return (
+    <div
+      className={`project-item ${!isLast ? 'border-b border-dotted border-[#252525]/30 pb-12 md:pb-16 mb-12 md:mb-16' : ''}`}
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        {/* Left Column - Text */}
+        <div className="flex flex-col justify-between min-h-[300px] md:min-h-[350px]">
+          <div className="flex flex-col gap-4">
+            <p className="text-xs md:text-sm font-medium text-[#252525]/60 uppercase tracking-wider">
+              {project.label}
+            </p>
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#252525] leading-tight">
+              {project.title}
+            </h3>
+          </div>
+          <p className="text-sm md:text-base text-[#252525]/60">
+            {project.location} • {project.date}
+          </p>
+        </div>
+
+        {/* Right Column - Image */}
+        <div ref={imageRef} className="relative group">
+          <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
+            <img
+              src={project.image}
+              alt={project.alt}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            {/* View More Details Button */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute bottom-4 right-4 bg-[#faf8f5]/95 backdrop-blur-sm text-[#252525] px-4 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 shadow-lg border border-[#252525]/10 hover:bg-[#faf8f5] transition-colors"
+            >
+              View More Details
+              <ArrowUpRight className="w-4 h-4" />
+            </motion.button>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

@@ -1,9 +1,18 @@
 import { motion } from 'framer-motion'
 import { Entropy } from '@/components/ui/entropy'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 export function About() {
+  const contentRef = useScrollReveal('.about-content-block', {
+    direction: 'up',
+    distance: 40,
+    stagger: 0.1,
+    duration: 0.8,
+  })
+
   return (
     <section 
+      ref={contentRef}
       id="about"
       className="relative z-10 w-full bg-[#faf8f5]"
     >
@@ -55,15 +64,15 @@ export function About() {
             </p>
           </div>
 
-          {/* Right Side - Heading & Paragraph */}
+          {/* Right Side - Paragraphs */}
           <div className="lg:col-span-7 lg:pl-8">
             
-            {/* Static heading (no scroll-based word reveal) */}
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight mb-10">
+            {/* Scroll-revealed paragraph */}
+            <p className="about-content-block text-lg md:text-xl text-[#252525]/80 leading-relaxed mb-6">
               Renor builds digital systems shaped with intention. We design and engineer products that are structured, dependable, and built to scale.
-            </h3>
-            {/* Static paragraph (no scroll-based word reveal) */}
-            <p className="text-lg md:text-xl text-[#252525]/80 leading-relaxed">
+            </p>
+            {/* Scroll-revealed paragraph */}
+            <p className="about-content-block text-lg md:text-xl text-[#252525]/80 leading-relaxed">
               Our approach is rooted in clarity and reduction. We remove noise, create predictable flows, and craft interfaces that feel balanced and precise. Each product is grounded in strong design logic and clean engineering practices that last beyond the first release.
             </p>
 

@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, memo } from 'react'
 import { easing, durations, delays } from '../styles/tokens'
 import { useLenis } from 'lenis/react'
+import { useScrollStack } from '../hooks/useScrollStack'
 
 const services = [
   { 
@@ -81,6 +82,12 @@ export function Services() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const lenis = useLenis()
+  const servicesStackRef = useScrollStack('.service-item-wrapper', {
+    stagger: 0.2,
+    duration: 0.9,
+    ease: 'power3.out',
+    start: 'top 80%',
+  })
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index)
@@ -122,7 +129,8 @@ export function Services() {
   }
 
   return (
-    <section className="relative w-full bg-[#faf8f5] px-4 md:px-12 lg:px-24 py-16 md:py-24">
+    <section className="relative w-full bg-[#faf8f5]">
+      <div className="flex flex-col px-4 md:px-12 lg:px-24 py-16 md:py-24">
       {/* Section Label */}
       <div className="flex justify-between items-center w-full mb-12 md:mb-16">
         <div className="flex flex-col items-start gap-1">
@@ -151,19 +159,20 @@ export function Services() {
       </div>
 
       {/* Box Container */}
-      <div className="bg-[#1a1a1a] rounded-2xl md:rounded-3xl px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20">
+      <div ref={servicesStackRef as React.RefObject<HTMLDivElement>} className="bg-[#1a1a1a] rounded-2xl md:rounded-3xl px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20">
         {/* Services List */}
         <div className="mb-12 md:mb-16">
           {services.map((service, i) => (
-            <ServiceItem
-              key={service.name}
-              service={service}
-              index={i}
-              expandedIndex={expandedIndex}
-              hoveredIndex={hoveredIndex}
-              setHoveredIndex={setHoveredIndex}
-              toggleExpand={toggleExpand}
-            />
+            <div key={service.name} className="service-item-wrapper">
+              <ServiceItem
+                service={service}
+                index={i}
+                expandedIndex={expandedIndex}
+                hoveredIndex={hoveredIndex}
+                setHoveredIndex={setHoveredIndex}
+                toggleExpand={toggleExpand}
+              />
+            </div>
           ))}
         </div>
 
@@ -209,6 +218,10 @@ export function Services() {
             </motion.span>
           </motion.a>
         </div>
+      </div>
+
+      {/* Bottom Line */}
+      <div className="w-full border-t border-dotted border-[#252525]/40 mt-16 md:mt-24" />
       </div>
     </section>
   )

@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useScrollStack } from '../hooks/useScrollStack'
 
 const processes = [
   {
@@ -37,8 +38,16 @@ const processes = [
 
 
 export function Process() {
+  const processStackRef = useScrollStack('.process-card-section', {
+    stagger: 0.2,
+    duration: 1,
+    ease: 'power3.out',
+    start: 'top 75%',
+  })
+
   return (
-    <section className="relative w-full bg-[#faf8f5] px-4 md:px-12 lg:px-24 py-24 md:py-32">
+    <section ref={processStackRef} className="relative w-full bg-[#faf8f5]">
+      <div className="flex flex-col px-4 md:px-12 lg:px-24 py-24 md:py-32">
       {/* Section Label */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -283,6 +292,10 @@ export function Process() {
           background-color: var(--btn-color, #1a1a1a) !important;
         }
       `}</style>
+
+      {/* Bottom Line */}
+      <div className="w-full border-t border-dotted border-[#252525]/40 mt-16 md:mt-24" />
+      </div>
     </section>
   )
 }

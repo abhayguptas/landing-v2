@@ -3,7 +3,8 @@ import { Zap, Feather, Clock } from 'lucide-react'
 
 export function WhyUs() {
   return (
-    <section className="relative w-full bg-[#faf8f5] px-4 md:px-12 lg:px-24 py-24 md:py-32">
+    <section className="relative w-full bg-[#faf8f5]">
+      <div className="flex flex-col px-4 md:px-12 lg:px-24 py-24 md:py-32">
       
       {/* Section Label */}
       <motion.div 
@@ -350,6 +351,9 @@ export function WhyUs() {
         </div>
       </div>
 
+      {/* Bottom Line */}
+      <div className="w-full border-t border-dotted border-[#252525]/40 mt-16 md:mt-24" />
+      </div>
     </section>
   )
 }
