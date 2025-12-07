@@ -9,7 +9,7 @@ export const colors = {
   dark: {
     primary: '#252525',    // Main dark color (most common)
     secondary: '#1a1a1a',   // For dark cards/containers (Services, FAQ)
-    tertiary: '#262626',     // Subtle dark variation (WhyUs, entropy - visually similar to primary)
+    tertiary: '#1a1a1a',     // Subtle dark variation (WhyUs, entropy - visually similar to primary)
   },
   light: {
     primary: '#faf8f5',     // Main background
@@ -17,7 +17,7 @@ export const colors = {
   },
   text: {
     primary: '#252525',
-    muted: '#6b6a63',       // Navbar background
+    muted: '#5f6163',       // Navbar background
     light: '#faf8f5',
   },
   gradient: {

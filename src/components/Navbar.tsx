@@ -84,7 +84,7 @@ export function Navbar({ visible = true, isLoaded = false }: NavbarProps) {
             initial={{ opacity: 0, y: -20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.8, delay: isLoaded ? 0.5 : 0, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden md:flex items-center bg-[#6b6a63] rounded-2xl p-1.5 pl-6 pr-1.5 gap-4 pointer-events-auto"
+            className="hidden md:flex items-center bg-[#5f6163] rounded-2xl p-1.5 pl-6 pr-1.5 gap-4 pointer-events-auto"
         >
           <div className="flex gap-5 text-[#faf8f5] font-medium text-base leading-[1.4]">
             {navItems.map((item, index) => (

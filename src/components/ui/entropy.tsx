@@ -210,7 +210,7 @@ export function Entropy({ className = "", size = 400, quote }: EntropyProps) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className={`relative bg-[#262626] ${className}`} style={{ width: size, height: size }}>
+      <div className={`relative bg-[#1a1a1a] ${className}`} style={{ width: size, height: size }}>
         <canvas
           ref={canvasRef}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"

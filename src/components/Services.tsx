@@ -145,13 +145,13 @@ export function Services() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="text-left text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl"
         >
-          We guide founders from idea to product and{' '}
-          <span className="text-[#252525]/40">from product to scale</span>
+          From first step to{' '}
+          <span className="text-[#252525]/40">full scale</span>
         </motion.h1>
       </div>
 
       {/* Box Container */}
-      <div className="bg-[#262626] rounded-2xl md:rounded-3xl px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20">
+      <div className="bg-[#1a1a1a] rounded-2xl md:rounded-3xl px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20">
         {/* Services List */}
         <div className="mb-12 md:mb-16">
           {services.map((service, i) => (

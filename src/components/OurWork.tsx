@@ -31,24 +31,6 @@ const projects: Project[] = [
     date: 'May 6, 2025',
     image: '/p2.png',
     alt: 'Office solar panel project'
-  },
-  {
-    id: 3,
-    label: 'Residential Projects',
-    title: 'Integrated solar solution for sustainable living in urban environments',
-    location: 'Bandung',
-    date: 'Mar 15, 2025',
-    image: '/p3.png',
-    alt: 'Residential solar panel project'
-  },
-  {
-    id: 4,
-    label: 'Industrial Projects',
-    title: 'Large-scale solar farm providing clean energy for manufacturing facilities',
-    location: 'Surabaya',
-    date: 'Feb 20, 2025',
-    image: '/1.png',
-    alt: 'Industrial solar panel project'
   }
 ]
 

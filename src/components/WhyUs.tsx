@@ -39,7 +39,7 @@ export function WhyUs() {
       </div>
 
       {/* Bento Grid */}
-      <div className="mt-38 bg-[#262626] rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8">
+      <div className="mt-38 bg-[#1a1a1a] rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
         
           {/* Column 1 - Outer container with dark card + features list */}
@@ -51,7 +51,7 @@ export function WhyUs() {
           className="bg-[#f0efeb] rounded-2xl p-4 flex flex-col gap-3"
         >
           {/* Dark Card */}
-          <div className="bg-[#262626] rounded-xl p-5 flex flex-col min-h-[50px]">
+          <div className="bg-[#1a1a1a] rounded-xl p-5 flex flex-col min-h-[50px]">
             
             {/* Animated Infinity Symbol */}
             <div className="flex-1 min-h-[120px] mb-4 flex items-center justify-center relative overflow-hidden">

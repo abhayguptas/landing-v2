@@ -8,6 +8,7 @@ import { useRef, lazy, Suspense } from 'react'
 
 // Lazy load heavy components for code splitting
 // Note: Testimonials loads eagerly due to Three.js initialization requirements
+const WhyUs = lazy(() => import('./components/WhyUs').then(m => ({ default: m.WhyUs })))
 const Services = lazy(() => import('./components/Services').then(m => ({ default: m.Services })))
 const Process = lazy(() => import('./components/Process').then(m => ({ default: m.Process })))
 const StudioReveal = lazy(() => import('./components/StudioReveal').then(m => ({ default: m.StudioReveal })))
@@ -45,9 +46,9 @@ function App() {
             <Suspense fallback={<ComponentLoader />}>
               <Process />
             </Suspense>
-            {/* <Suspense fallback={<ComponentLoader />}>
+            <Suspense fallback={<ComponentLoader />}>
               <WhyUs />
-            </Suspense> */}
+            </Suspense>
             <Suspense fallback={<ComponentLoader />}>
               <OurWork />
             </Suspense>
