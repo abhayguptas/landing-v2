@@ -26,8 +26,7 @@ export function StudioReveal() {
   const leftTextX = useTransform(smoothProgress, [0, 0.4], [40, -800])
   const rightTextX = useTransform(smoothProgress, [0, 0.4], [50, 800])
   
-  // "Keep Scrolling" indicator fades out
-  const keepScrollingOpacity = useTransform(smoothProgress, [0, 0.15], [1, 0])
+  // "Keep Scrolling" indicator fades out - not needed
   
   // Overlay text reveals after expansion
   const overlayOpacity = useTransform(smoothProgress, [0.55, 0.75], [0, 1])

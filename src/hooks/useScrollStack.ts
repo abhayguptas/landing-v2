@@ -4,7 +4,7 @@
  * Perfect for Process, Services, and modular assembly flows
  */
 
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -84,6 +84,7 @@ export function useScrollStack(
 
   return containerRef as React.RefObject<HTMLElement>
 }
+
 
 
 
