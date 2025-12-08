@@ -259,7 +259,7 @@ export function Pricing() {
           {/* Sliding Background Indicator */}
           <motion.div
             layoutId="toggle-indicator"
-            className="absolute inset-2 rounded-full bg-[#252525] z-0"
+            className="absolute rounded-full bg-[#252525] z-0"
             initial={false}
             transition={{
               type: "spring",
@@ -268,8 +268,11 @@ export function Pricing() {
               mass: 0.5
             }}
             style={{
-              left: `${plans.findIndex(p => p.name === selectedPlan) * (100 / plans.length)}%`,
-              width: `${100 / plans.length}%`
+              // Provide breathing room so the highlight doesn't touch the border
+              top: '6px',
+              bottom: '6px',
+              width: `calc((100% - 52px) / ${plans.length})`,
+              left: `calc(12px + ${plans.findIndex(p => p.name === selectedPlan)} * ((100% - 15px) / ${plans.length}))`
             }}
           />
           

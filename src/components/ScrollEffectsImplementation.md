@@ -246,3 +246,5 @@ src/
 - All effects are intentional, clean, structured, and modern
 - Performance optimized with GPU-accelerated properties only
 
+
+

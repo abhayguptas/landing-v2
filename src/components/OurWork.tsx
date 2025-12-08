@@ -23,7 +23,7 @@ const projects: Project[] = [
     title: 'Delivering sustainable energy for a multi-use rooftop garden in South Jakarta',
     location: 'Jakarta',
     date: 'Jan 1, 2025',
-    image: '/p1.png',
+    image: '/project1.png',
     alt: 'Rooftop solar panel project'
   },
   {
@@ -32,7 +32,7 @@ const projects: Project[] = [
     title: 'Ground-mounted solar array designed to power a micro-grid in West Java',
     location: 'Semarang',
     date: 'May 6, 2025',
-    image: '/p2.png',
+    image: '/project2.png',
     alt: 'Office solar panel project'
   }
 ]
@@ -107,18 +107,23 @@ export function OurWork() {
 }
 
 function ProjectItem({ project, isLast }: { project: typeof projects[0], index: number, isLast: boolean }) {
+  const textRef = useParallaxScroll({
+    speed: 0.15,
+    direction: 'up',
+  }) as React.RefObject<HTMLElement>
+
   const imageRef = useParallaxScroll({
     speed: 0.3,
     direction: 'up',
-  }) as React.RefObject<HTMLDivElement>
+  }) as React.RefObject<HTMLElement>
 
   return (
     <div
-      className={`project-item ${!isLast ? 'border-b border-dotted border-[#252525]/30 pb-12 md:pb-16 mb-12 md:mb-16' : ''}`}
+      className={`project-item ${!isLast ? 'pb-12 md:pb-16 mb-12 md:mb-16' : ''}`}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         {/* Left Column - Text */}
-        <div className="flex flex-col justify-between min-h-[300px] md:min-h-[350px]">
+        <div ref={textRef as React.RefObject<HTMLDivElement>} className="flex flex-col gap-6 justify-center h-full">
           <div className="flex flex-col gap-4">
             <p className="text-xs md:text-sm font-medium text-[#252525]/60 uppercase tracking-wider">
               {project.label}
@@ -132,10 +137,11 @@ function ProjectItem({ project, isLast }: { project: typeof projects[0], index: 
           </p>
         </div>
 
-        {/* Right Column - Image */}
-        <div ref={imageRef} className="relative group">
+        {/* Right Column - Image (parallax on image only to avoid layout shift) */}
+        <div className="relative group">
           <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
             <img
+              ref={imageRef as React.RefObject<HTMLImageElement>}
               src={project.image}
               alt={project.alt}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

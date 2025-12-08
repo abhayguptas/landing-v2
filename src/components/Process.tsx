@@ -302,13 +302,7 @@ export function Process() {
 
 function ProcessCard({ process, index }: { process: typeof processes[0], index: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-      className="process-card-section"
-    >
+    <div className="process-card-section">
       <div className="process-card">
         {/* Flip Card */}
         <div className="process-flip-card">
@@ -354,6 +348,6 @@ function ProcessCard({ process, index }: { process: typeof processes[0], index: 
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
