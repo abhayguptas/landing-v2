@@ -1,19 +1,14 @@
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { About } from './components/About'
-import { Testimonials } from './components/Testimonials'
 import { SmoothScroll } from './components/SmoothScroll'
 import { useInView } from 'framer-motion'
 import { useRef, lazy, Suspense } from 'react'
 
 // Lazy load heavy components for code splitting
 // Note: Testimonials loads eagerly due to Three.js initialization requirements
-const WhyUs = lazy(() => import('./components/WhyUs').then(m => ({ default: m.WhyUs })))
 const Services = lazy(() => import('./components/Services').then(m => ({ default: m.Services })))
-const Process = lazy(() => import('./components/Process').then(m => ({ default: m.Process })))
 const StudioReveal = lazy(() => import('./components/StudioReveal').then(m => ({ default: m.StudioReveal })))
-const OurWork = lazy(() => import('./components/OurWork').then(m => ({ default: m.OurWork })))
-const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })))
 const FAQ = lazy(() => import('./components/FAQ').then(m => ({ default: m.FAQ })))
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })))
 
