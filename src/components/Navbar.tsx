@@ -71,12 +71,12 @@ export function Navbar({ visible = true, isLoaded = false }: NavbarProps) {
         className="fixed top-0 left-0 right-0 z-50 px-6 py-8 flex justify-between items-start pointer-events-none"
       >
         {/* Logo Section - Pointer events auto to allow clicking if needed */}
-        <div className="flex flex-col items-center gap-0.3 pointer-events-auto">
+        <div className="flex flex-col items-center gap-0.1 pointer-events-auto">
           <div className="w-8 h-8 relative">
-             <img src="/Kubixter-logo.png" alt="Kubixter Logo" className="w-full h-full object-contain" loading="eager" decoding="sync" />
+             <img src="/kubixter-logo.png" alt="Kubixter Logo" className="w-full h-full object-contain" loading="eager" decoding="sync" />
           </div>
           {/* Gradient Line */}
-          <div className="h-[2.5px] w-[85%] bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff]" />
+          <div className="h-[2px] w-[65%] bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff] mr-0.4" />
         </div>
 
         {/* Desktop Menu */}

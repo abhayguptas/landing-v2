@@ -94,7 +94,7 @@ export function Footer() {
         >
           {/* Large Kubixter Text */}
           <motion.div variants={itemVariants} className="mb-auto">
-            <h2 className="text-[32vw] sm:text-[26vw] md:text-[22vw] lg:text-[18vw] xl:text-[16vw] font-bold text-[#faf8f5] leading-[0.85] tracking-tight text-left lg:-ml-5">
+            <h2 className="sm:text-[24vw] md:text-[20vw] lg:text-[14vw] xl:text-[14vw] font-bold text-[#faf8f5] leading-[0.85] tracking-tight text-left lg:-ml-5 mt-8">
               Kubixter
             </h2>
           </motion.div>
@@ -106,12 +106,12 @@ export function Footer() {
                 Let's build something together.
               </h3>
               <motion.a 
-                href="mailto:hello@Kubixter.systems" 
+                href="mailto:contact@kubixter.com" 
                 className="group inline-flex items-center gap-2 text-lg font-medium text-[#faf8f5]/70 hover:text-[#faf8f5] transition-colors duration-300"
                 whileHover={{ x: 4 }}
                 transition={{ duration: 0.2 }}
               >
-                hello@Kubixter.systems
+                contact@kubixter.com
                 <motion.span 
                   className="inline-block"
                   initial={{ x: 0 }}
@@ -125,17 +125,22 @@ export function Footer() {
 
             {/* Links */}
             <div className="flex gap-5 text-sm font-medium text-[#faf8f5]/60">
-              {['Twitter', 'LinkedIn', 'Dribbble'].map((link, i) => (
+              {[
+                { label: 'Twitter', href: 'https://x.com/kubixters' },
+                { label: 'LinkedIn', href: 'https://linkedin.com/company/kubixter' },
+              ].map((link, i) => (
                 <motion.a 
-                  key={link}
-                  href="#" 
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   custom={i}
                   variants={linkVariants}
                   whileHover={{ y: -2, color: '#faf8f5' }}
                   transition={{ duration: 0.2 }}
                   className="transition-colors duration-300"
                 >
-                  {link}
+                  {link.label}
                 </motion.a>
               ))}
             </div>
@@ -163,7 +168,7 @@ export function Footer() {
                 <div className="w-8 h-8">
                   <img src="/kubixter-logo.png" alt="Kubixter Logo" className="w-full h-full object-contain brightness-0 invert" />
                 </div>
-                <div className="h-[2px] w-[85%] bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff]" />
+                <div className="h-[2px] w-[65%] bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff] mr-0.4" />
               </div>
               <span className="text-xs text-[#faf8f5]/50">
                 © {currentYear} Kubixter Systems

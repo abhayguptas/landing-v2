@@ -38,8 +38,8 @@ export function Hero({ isLoaded = false }: HeroProps) {
       <div className="flex-1 px-6 md:px-12 lg:px-24 flex flex-col relative">
         
         {/* Huge Text & Right Info */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 lg:mb-12">
-            <h1 className="text-[15vw] leading-[0.8] font-bold text-[#262626] tracking-tight -ml-[0.05em] flex overflow-hidden">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 lg:mb-16 lg:mt-6">
+            <h1 className="text-[16vw] leading-[0.8] font-bold text-[#262626] tracking-tight -ml-[0.05em] flex overflow-hidden">
                 {"Kubixter".split("").map((char, i) => (
                     <motion.span
                         key={i}
