@@ -1,7 +1,7 @@
 # Premium Scroll Effects Implementation Guide
 
 ## Overview
-This guide outlines the high-end scroll interactions implemented across the Renor product studio website. All animations follow principles of precision, minimalism, and engineered motion.
+This guide outlines the high-end scroll interactions implemented across the Kubixter product studio website. All animations follow principles of precision, minimalism, and engineered motion.
 
 ## Scroll Effect Types
 

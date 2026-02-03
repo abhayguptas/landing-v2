@@ -39,8 +39,8 @@ export function Hero({ isLoaded = false }: HeroProps) {
         
         {/* Huge Text & Right Info */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 lg:mb-12">
-            <h1 className="text-[20vw] leading-[0.8] font-bold text-[#262626] tracking-tight -ml-[0.05em] flex overflow-hidden">
-                {"Renor".split("").map((char, i) => (
+            <h1 className="text-[15vw] leading-[0.8] font-bold text-[#262626] tracking-tight -ml-[0.05em] flex overflow-hidden">
+                {"Kubixter".split("").map((char, i) => (
                     <motion.span
                         key={i}
                         initial={{ opacity: 0, y: 80 }}
@@ -63,8 +63,8 @@ export function Hero({ isLoaded = false }: HeroProps) {
                 transition={{ duration: 1.2, delay: isLoaded ? 0.3 : 0, ease: [0.16, 1, 0.3, 1] }}
                 className="mt-8 lg:mt-0 text-right text-[#252525] font-medium text-sm md:text-base max-w-xs ml-auto"
             >
-                <p>RE•NOR SYSTEMS</p>
-                <p>— ESTD 2025 —</p>
+                <p>KUBIXTER SYSTEMS</p>
+                <p>— ESTD 2026 —</p>
                 <p>PRODUCT DESIGN + ENGINEERING</p>
             </motion.div>
         </div>
@@ -76,7 +76,7 @@ export function Hero({ isLoaded = false }: HeroProps) {
             transition={{ duration: 1.2, delay: isLoaded ? 0.5 : 0, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-lg text-[#252525] text-lg md:text-xl font-medium leading-relaxed mb-12 md:mb-16 ml-2"
         >
-            <p>Renorlabs crafts clear brands and durable digital products with design and engineering in balance.</p>
+            <p>Kubixter crafts clear brands and durable digital products with design and engineering in balance.</p>
         </motion.div>
 
         {/* Marquee Section */}

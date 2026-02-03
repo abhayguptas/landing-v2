@@ -1,7 +1,7 @@
 # Premium Scroll Effects - Implementation Summary
 
 ## Overview
-High-end scroll interactions have been implemented across the Renor product studio website using GSAP ScrollTrigger and Framer Motion. All animations follow principles of precision, minimalism, and engineered motion.
+High-end scroll interactions have been implemented across the Kubixter product studio website using GSAP ScrollTrigger and Framer Motion. All animations follow principles of precision, minimalism, and engineered motion.
 
 ## Installed Dependencies
 - `@gsap/react` - React integration for GSAP

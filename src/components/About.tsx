@@ -46,7 +46,7 @@ export function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             className="text-left text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl"
           >
-            Meet Renor,{' '}
+            Meet Kubixter,{' '}
             <span className="text-[#252525]/40">a studio shaped by intention</span>
           </motion.h1>
         </div>
@@ -60,7 +60,7 @@ export function About() {
               <Entropy size={360} className="rounded-lg" />
             </div>
             <p className="mt-4 text-sm text-[#252525]/60 italic tracking-wide">
-              "Renor - Where Chaos Finds Form"
+              "Kubixter - Where Chaos Finds Form"
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export function About() {
             
             {/* Scroll-revealed paragraph */}
             <p className="about-content-block text-lg md:text-xl text-[#252525]/80 leading-relaxed mb-6">
-              Renor builds digital systems shaped with intention. We design and engineer products that are structured, dependable, and built to scale.
+              Kubixter builds digital systems shaped with intention. We design and engineer products that are structured, dependable, and built to scale.
             </p>
             {/* Scroll-revealed paragraph */}
             <p className="about-content-block text-lg md:text-xl text-[#252525]/80 leading-relaxed">

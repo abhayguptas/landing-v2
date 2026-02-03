@@ -141,7 +141,7 @@ export function Testimonials() {
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-[#252525] leading-[1.1] max-w-4xl">
           What it feels like to{' '}
-            <span className="text-[#252525]/40">work with Renor</span>
+            <span className="text-[#252525]/40">work with Kubixter</span>
           </h1>
         </motion.div>
       </div>

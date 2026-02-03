@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     question: 'Do you work with early stage founders',
-    answer: 'Yes. Renor is built around early ideas that need guidance and structure. We help founders move from uncertainty to a clear path forward.',
+    answer: 'Yes. Kubixter is built around early ideas that need guidance and structure. We help founders move from uncertainty to a clear path forward.',
   },
   {
     question: 'What kind of products do you work on',

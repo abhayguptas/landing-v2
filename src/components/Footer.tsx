@@ -80,7 +80,7 @@ export function Footer() {
         >
           <img 
             src="/footer.png" 
-            alt="Renor Systems" 
+            alt="Kubixter Systems" 
             className="w-full h-full object-contain lg:object-cover"
             loading="lazy"
             decoding="async"
@@ -92,10 +92,10 @@ export function Footer() {
           variants={containerVariants}
           className="lg:col-span-8 flex flex-col justify-between px-6 md:px-12 lg:px-14 py-12 lg:py-16"
         >
-          {/* Large Renor Text */}
+          {/* Large Kubixter Text */}
           <motion.div variants={itemVariants} className="mb-auto">
             <h2 className="text-[32vw] sm:text-[26vw] md:text-[22vw] lg:text-[18vw] xl:text-[16vw] font-bold text-[#faf8f5] leading-[0.85] tracking-tight text-left lg:-ml-5">
-              Renor
+              Kubixter
             </h2>
           </motion.div>
           
@@ -106,12 +106,12 @@ export function Footer() {
                 Let's build something together.
               </h3>
               <motion.a 
-                href="mailto:hello@renor.systems" 
+                href="mailto:hello@Kubixter.systems" 
                 className="group inline-flex items-center gap-2 text-lg font-medium text-[#faf8f5]/70 hover:text-[#faf8f5] transition-colors duration-300"
                 whileHover={{ x: 4 }}
                 transition={{ duration: 0.2 }}
               >
-                hello@renor.systems
+                hello@Kubixter.systems
                 <motion.span 
                   className="inline-block"
                   initial={{ x: 0 }}
@@ -160,13 +160,13 @@ export function Footer() {
               transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex flex-col items-center gap-0.5">
-                <div className="w-5 h-5">
-                  <img src="/renor-logo.png" alt="Renor Logo" className="w-full h-full object-contain brightness-0 invert" />
+                <div className="w-8 h-8">
+                  <img src="/kubixter-logo.png" alt="Kubixter Logo" className="w-full h-full object-contain brightness-0 invert" />
                 </div>
                 <div className="h-[2px] w-[85%] bg-gradient-to-r from-[#ff4d00] via-[#ffea00] to-[#0066ff]" />
               </div>
               <span className="text-xs text-[#faf8f5]/50">
-                © {currentYear} Renor Systems
+                © {currentYear} Kubixter Systems
               </span>
             </motion.div>
 

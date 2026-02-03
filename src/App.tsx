@@ -43,16 +43,16 @@ function App() {
             <Suspense fallback={<ComponentLoader />}>
               <Services />
             </Suspense>
-            <Suspense fallback={<ComponentLoader />}>
+            {/* <Suspense fallback={<ComponentLoader />}>
               <Process />
-            </Suspense>
-            <Suspense fallback={<ComponentLoader />}>
+            </Suspense> */}
+            {/* <Suspense fallback={<ComponentLoader />}>
               <WhyUs />
-            </Suspense>
-            <Suspense fallback={<ComponentLoader />}>
+            </Suspense> */}
+            {/* <Suspense fallback={<ComponentLoader />}>
               <OurWork />
-            </Suspense>
-            <Testimonials />
+            </Suspense> */}
+            {/* <Testimonials /> */}
             <Suspense fallback={<ComponentLoader />}>
               <Pricing />
             </Suspense>

@@ -134,7 +134,7 @@ const plans: PricingPlan[] = [
   {
     id: 1,
     name: "Start",
-    brand: "Renor",
+    brand: "Kubixter",
     price: 1500,
     priceUnit: "/month",
     description: "Best for founders who need a fast and polished launch.",
@@ -155,7 +155,7 @@ const plans: PricingPlan[] = [
   {
     id: 2,
     name: "Build",
-    brand: "Renor",
+    brand: "Kubixter",
     price: 2500,
     priceUnit: "/month",
     description: "Best for founders building their first real product.",
@@ -176,7 +176,7 @@ const plans: PricingPlan[] = [
   {
     id: 3,
     name: "Scale",
-    brand: "Renor",
+    brand: "Kubixter",
     price: "Custom",
     priceUnit: "/month",
     description: "Designed for high growth startups and enterprises.",

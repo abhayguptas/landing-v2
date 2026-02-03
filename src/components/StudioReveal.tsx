@@ -61,7 +61,7 @@ export function StudioReveal() {
                     style={{ x: rightTextX }}
                     className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#252525] tracking-tight"
                 >
-                  Renorlabs
+                  Kubixter
                 </motion.span>
             </div>
         </div>

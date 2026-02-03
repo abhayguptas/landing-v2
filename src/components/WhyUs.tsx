@@ -80,7 +80,7 @@ export function WhyUs() {
           {/* Title and Year */}
           <div className="flex items-baseline justify-between mb-3">
             <h3 className="text-2xl md:text-3xl font-bold text-[#252525] uppercase tracking-tight">
-              Renor
+              Kubixter
             </h3>
             <span className="text-base text-[#252525]/60">2025</span>
           </div>
