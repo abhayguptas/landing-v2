@@ -36,9 +36,6 @@ function App() {
           </div>
             <About />
             <Suspense fallback={<ComponentLoader />}>
-              <Services />
-            </Suspense>
-            <Suspense fallback={<ComponentLoader />}>
               <FAQ />
             </Suspense>
             <Suspense fallback={<ComponentLoader />}>

@@ -134,7 +134,7 @@ export function FAQ() {
                       onClick={() => toggleFAQ(index)}
                         className="w-full flex items-center justify-between text-left group"
                     >
-                        <h3 className="text-2xl md:text-3xl font-medium text-white pr-4 flex-1 min-w-0">
+                        <h3 className="text-xl md:text-[26px] font-medium text-white pr-4 flex-1 min-w-0">
                         {faq.question}
                       </h3>
                         <div className="flex-shrink-0 ml-4 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-md group-hover:bg-white/15 transition-colors">
